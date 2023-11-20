@@ -49,6 +49,29 @@ fetch("http://localhost:5678/api/works")
     filterButtons[0].classList.add("selected");
   });
 
+function afficherImages() {
+  const galleryContainer = document.querySelector(".gallery");
+  galleryContainer.innerHTML = "";
+  fetch("http://localhost:5678/api/works")
+    .then((response) => response.json())
+    .then((data) => {
+      data.forEach((item) => {
+        const figure = document.createElement("figure");
+        const img = document.createElement("img");
+        const figcaption = document.createElement("figcaption");
+
+        img.src = item.imageUrl;
+        img.alt = item.title;
+        figcaption.textContent = item.title;
+
+        figure.appendChild(img);
+        figure.appendChild(figcaption);
+
+        galleryContainer.appendChild(figure);
+      });
+    });
+}
+
 // Gestionnaire d'événements logout & edit
 const logoutButton = document.getElementById("login-status");
 const editIcon = document.querySelector("#edit-icon");
@@ -195,6 +218,7 @@ function openModal() {
             displayedImages = displayedImages.filter(
               (image) => image.id !== imageId
             );
+            afficherImages();
           });
         });
 
