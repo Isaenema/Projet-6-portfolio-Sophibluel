@@ -38,15 +38,4 @@ uploadForm.addEventListener("submit", async (e) => {
   } else {
     alert("pas ok");
   }
-
-  // .then((response) => response.json())
-  // .then((data) => {
-  //   displayedImages.push(data);
-
-  //   // Réinitialisation du formulaire et fermeture du modal
-  //   uploadForm.reset();
-  // })
-  // .catch((error) => {
-  //   console.error("Erreur lors du téléversement de l'image : " + error);
-  // });
 });
