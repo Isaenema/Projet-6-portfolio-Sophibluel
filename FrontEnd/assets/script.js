@@ -79,6 +79,11 @@ if (isAuthenticated === "true") {
   editIcon.style.display = "inline"; // Afficher icon
   editText.style.display = "inline"; // Afficher modifier
 
+  const filterButtons = document.querySelectorAll(".filter-button");
+  filterButtons.forEach((button) => {
+    button.style.display = "none";
+  });
+
   // Afficher le bandeau "Mode création" lorsque l'utilisateur est co
   const bandeau = document.querySelector(".bandeau");
   bandeau.style.display = "flex";
@@ -111,6 +116,9 @@ editText.addEventListener("click", function () {
 function openModal() {
   // Ouvrir le modal
   modal.style.display = "flex";
+
+  const filterInput = document.getElementById("filter");
+  filterInput.value = "";
 
   // Croix pour fermer le modal
   const closeButton = document.querySelector(".close");
@@ -177,8 +185,8 @@ function openModal() {
 
         const deleteIcon = document.createElement("i");
         deleteIcon.classList.add("fas", "fa-trash-alt", "delete-icon");
-        deleteIcon.addEventListener("click", function () {
-          // Appeler l'API Swagger pour supprimer l'image
+        deleteIcon.addEventListener("click", function (event) {
+          event.preventDefault();
           const imageId = item.id;
           deleteImage(imageId).then(() => {
             // Supprimer l'élément de l'image de la galerie
@@ -208,3 +216,57 @@ function deleteImage(imageId) {
     },
   });
 }
+
+// // // // // // // VALIDATE BTN // // // // // // // //
+
+const titleInput = document.getElementById("title");
+const filterInput = document.getElementById("filter");
+const imageInput = document.getElementById("image");
+const submitButton = document.querySelector(
+  "#add-photo-modal button[type='submit']"
+);
+
+// Gestionnaire d'événements pour mettre à jour le style du bouton
+function updateSubmitButtonState() {
+  // Vérifier si les champs requis sont remplis
+  const isTitleEmpty = titleInput.value.trim() === "";
+  const isImageSelected = imageInput.files.length > 0;
+  const isFilterSelected = filterInput.value !== "";
+
+  // Mettre à jour le style du bouton en fonction de l'état des champs :
+  submitButton.disabled = isTitleEmpty || !isImageSelected || !isFilterSelected;
+}
+
+// Ajouter des gestionnaires d'événements
+titleInput.addEventListener("input", updateSubmitButtonState);
+filterInput.addEventListener("change", updateSubmitButtonState);
+imageInput.addEventListener("change", updateSubmitButtonState);
+
+// Appel fonction une fois pour mettre à jour l'état
+updateSubmitButtonState();
+
+// // // // // // APERCU IMG // // // // // //
+
+// Récupération de l'élément d'aperçu de l'image
+const imagePreview = document.getElementById("image-preview");
+
+// Gestionnaire d'événements pour la sélection d'une image
+imageInput.addEventListener("change", function () {
+  const selectedImage = imageInput.files[0];
+
+  // Vérifier s'il y a une image
+  if (selectedImage) {
+    // Créer un objet URL pour l'aperçu de l'image
+    const imageUrl = URL.createObjectURL(selectedImage);
+
+    // Afficher l'aperçu de l'image
+    imagePreview.src = imageUrl;
+    imagePreview.style.display = "block";
+  } else {
+    // Aucune image sélectionnée, masquer l'aperçu
+    imagePreview.src = "";
+    imagePreview.style.display = "none";
+  }
+
+  updateSubmitButtonState();
+});

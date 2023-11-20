@@ -8,8 +8,6 @@ uploadForm.addEventListener("submit", async (e) => {
   const filter = document.getElementById("filter").value;
   const image = document.getElementById("image").files[0];
 
-  console.log("Filtre choisi : " + filter);
-
   const existingFilters = ["Objets", "Appartements", "Hotels & restaurants"];
 
   // Vérifier si les champs "Titre" et "Filtre" sont vides
@@ -22,25 +20,33 @@ uploadForm.addEventListener("submit", async (e) => {
   // FormData pour envoyer les données et l'image à l'API
   const formData = new FormData();
   formData.append("title", title);
-  formData.append("filter", filter);
+  formData.append("category", filter);
   formData.append("image", image);
 
   // Fetch pour envoyer les données à l'API avec token
-  fetch("http://localhost:5678/api/works", {
+  console.log(token);
+  let response = fetch("http://localhost:5678/api/works", {
     method: "POST",
-    body: formData,
     headers: {
+      Accept: "application/json",
       Authorization: "Bearer " + token,
     },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      //   displayedImages.push(data);
+    body: formData,
+  });
+  if (response.status === 200 || response.status === 201) {
+    alert("ok");
+  } else {
+    alert("pas ok");
+  }
 
-      // Réinitialisation du formulaire et fermeture du modal
-      uploadForm.reset();
-    })
-    .catch((error) => {
-      console.error("Erreur lors du téléversement de l'image : " + error);
-    });
+  // .then((response) => response.json())
+  // .then((data) => {
+  //   displayedImages.push(data);
+
+  //   // Réinitialisation du formulaire et fermeture du modal
+  //   uploadForm.reset();
+  // })
+  // .catch((error) => {
+  //   console.error("Erreur lors du téléversement de l'image : " + error);
+  // });
 });

@@ -308,7 +308,7 @@ button[type="submit"] {
   text-align: center;
   background-color: #1d6154;
   color: #fffef8;
-  border: 1px solid #1d6154;
+  border: 0;
   border-radius: 60px;
   padding: 10px 20px;
   cursor: pointer;
@@ -333,21 +333,9 @@ footer nav ul {
   justify-content: center;
 }
 
-/* MODAL */
+/* MODAL 1 */
 
-#myModal {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: none;
-}
-
+#myModal,
 #add-photo-modal {
   position: fixed;
   display: flex;
@@ -357,20 +345,22 @@ footer nav ul {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
   display: none;
 }
 
 .modal-content {
-  overflow: scroll;
   width: auto;
-  padding: 20px;
+  padding: 60px;
+  padding-top: 30px;
+  padding-right: 30px;
   background-color: #fff;
   color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 7px;
 }
 
 .closeX {
@@ -380,7 +370,7 @@ footer nav ul {
 }
 
 .close {
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 200;
   cursor: pointer;
 }
@@ -388,19 +378,152 @@ footer nav ul {
 .modal h3 {
   font-size: 24px;
   font-weight: 200;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .modal img {
   width: 100%;
-  height: 100px;
+  height: 109px;
   object-fit: contain;
+  margin-bottom: 24px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .image-gallery {
+  width: 500px;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
 }
+
+.image-container {
+  position: relative;
+  flex: 0 0 0 20%;
+}
+
+.fas {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  border: 3px solid;
+  border-color: black;
+  background-color: black;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* FIN MODAL 1 */
+
+/* MODAL 2 */
+
+.modal-content-add {
+  width: auto;
+  padding: 110px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #fff;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+}
+
+.hideadd {
+  display: none;
+}
+
+.browse-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e8f1f6;
+  border-radius: 2px;
+  padding: 20px;
+  padding-right: 60px;
+  padding-left: 60px;
+}
+
+#image-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+#image-preview img {
+  width: 100%;
+}
+.fa-image {
+  font-size: 66px;
+  color: #b9c5cc;
+}
+
+.addphotobrowse {
+  background-color: #cbd6dc;
+  color: #306685;
+  font-weight: 600;
+  padding: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 50px;
+  margin-bottom: 10px;
+}
+
+.taillemax {
+  font-size: 10px;
+}
+
+.addphoto-title,
+.addphoto-filtre {
+  display: flex;
+  flex-direction: column;
+}
+
+.addphoto-title input {
+  border: 0;
+  margin-top: 5px;
+  height: 40px;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+.addphoto-filtre select {
+  border: 0;
+  margin-top: 5px;
+  height: 40px;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+  cursor: pointer;
+}
+
+.validateAddPhoto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#add-photo-modal button[type="submit"] {
+  background-color: #a7a7a7;
+  color: white;
+}
+
+#add-photo-modal button[type="submit"]:not([disabled]) {
+  background-color: #1d6154;
+  cursor: pointer;
+}
+
+#add-photo-modal button[type="submit"][disabled] {
+  background-color: #a7a7a7;
+  cursor: not-allowed;
+}
+
+/* FIN MODAL 2 */
 
 #edit-icon {
   cursor: pointer;

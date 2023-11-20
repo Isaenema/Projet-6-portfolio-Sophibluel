@@ -114,26 +114,45 @@
       </div>
     </div>
     <div id="add-photo-modal" class="modal" aria-hidden="true">
-      <div class="modal-content">
+      <div class="modal-content-add">
         <div class="closeX">
           <span class="close">&times;</span>
         </div>
         <h3>Ajout photo</h3>
-        <form id="uploadForm" enctype="multipart/form-data">
-          <label for="image">+ ajouter photo</label>
-          <input type="file" id="image" name="image" />
+        <form id="uploadForm" enctype="multipart/form-data" method="post">
+          <div class="browse-container">
+            <i class="fa-regular fa-image"></i>
+            <br />
+            <label for="image" class="addphotobrowse">+ Ajouter photo</label>
+            <input
+              class="hideadd"
+              type="file"
+              id="image"
+              name="image"
+              accept="image/png, image/jpeg"
+            />
+            <p class="taillemax">jpg, png : 4mo max</p>
+            <!-- Ajoutez ceci dans votre modal où vous souhaitez afficher l'aperçu de l'image -->
+            <img id="image-preview" alt="Image Preview" />
+          </div>
           <br />
-          <label for="title">Titre :</label>
-          <input type="text" id="title" name="title" />
+          <div class="addphoto-title">
+            <label for="title">Titre</label>
+            <input type="text" id="title" name="title" />
+          </div>
           <br />
-          <label for="filter">Filtre :</label>
-          <select id="filter" name="filter">
-            <option value="Objets">Objets</option>
-            <option value="Appartements">Appartements</option>
-            <option value="Hotels & restaurants">Hotels & restaurants</option>
-          </select>
+          <div class="addphoto-filtre">
+            <label for="filter">Filtre</label>
+            <select id="filter" name="filter">
+              <option value="Objets">Objets</option>
+              <option value="Appartements">Appartements</option>
+              <option value="Hotels & restaurants">Hotels & restaurants</option>
+            </select>
+          </div>
           <br />
-          <button type="submit">Valider</button>
+          <div class="validateAddPhoto">
+            <button type="submit">Valider</button>
+          </div>
         </form>
       </div>
     </div>
