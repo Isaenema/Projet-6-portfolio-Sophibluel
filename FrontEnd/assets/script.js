@@ -35,7 +35,7 @@ fetch("http://localhost:5678/api/works")
     const filterButtons = document.querySelectorAll(".filter-button");
 
     filterButtons.forEach((button, index) => {
-      button.textContent = existingFilters[index]; // Utilisez le texte des filtres existants
+      button.textContent = existingFilters[index];
       button.addEventListener("click", () => {
         const selectedFilter = existingFilters[index];
         afficherImages(selectedFilter);
@@ -45,7 +45,6 @@ fetch("http://localhost:5678/api/works")
       });
     });
 
-    // Sélected Tous
     filterButtons[0].classList.add("selected");
   });
 
