@@ -338,6 +338,20 @@ footer nav ul {
 
 /* MODAL 1 */
 
+#myModal .modal-content {
+  width: auto;
+  padding: 60px;
+  padding-top: 30px;
+  padding-right: 50px;
+  background-color: #fff;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+}
+
 #myModal,
 #add-photo-modal {
   position: fixed;
@@ -385,11 +399,11 @@ footer nav ul {
 }
 
 .modal img {
-  width: 100%;
+  width: 90%;
   height: 109px;
-  object-fit: contain;
+  object-fit: cover;
   margin-bottom: 24px;
-  margin-right: 5px;
+  margin-right: 10px;
   margin-left: 5px;
 }
 
