@@ -282,7 +282,7 @@ li:hover {
 .filter-buttons {
   text-align: center;
   margin: 20px 0;
-  gap: 10;
+  gap: 10px;
 }
 
 input[type="submit"] {
@@ -401,7 +401,7 @@ footer nav ul {
 
 .image-container {
   position: relative;
-  flex: 0 0 0 20%;
+  flex: 0 0 20%;
 }
 
 .fas {
@@ -526,6 +526,26 @@ footer nav ul {
   cursor: not-allowed;
 }
 
+.iconsBackClose {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.fa-arrow-left {
+  font-size: 16px;
+}
+
+.back {
+  margin-left: -40px;
+}
+
+.closeAdd {
+  margin-right: -40px;
+  font-size: 30px;
+  cursor: pointer;
+}
 /* FIN MODAL 2 */
 
 #edit-icon {

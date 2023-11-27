@@ -59,11 +59,11 @@
         </article>
       </section>
       <section id="portfolio">
-        <span id="edit-container">
+        <div id="edit-container">
           <h2>Mes Projets</h2>
           <i class="fa-regular fa-pen-to-square" id="edit-icon"></i>
           <p id="edit-text">Modifier</p>
-        </span>
+        </div>
 
         <div class="filter-buttons">
           <input class="filter-button" type="submit" value="Tous" />
@@ -115,8 +115,15 @@
     </div>
     <div id="add-photo-modal" class="modal" aria-hidden="true">
       <div class="modal-content-add">
-        <div class="closeX">
-          <span class="close">&times;</span>
+        <div class="iconsBackClose">
+          <div class="backArrow" onclick="backTomyModal()">
+            <span class="back">
+              <i class="fa-solid fa-arrow-left" style="color: #000000"></i>
+            </span>
+          </div>
+          <div class="closeX">
+            <span class="closeAdd">&times;</span>
+          </div>
         </div>
         <h3>Ajout photo</h3>
         <form id="uploadForm" enctype="multipart/form-data" method="post">
@@ -132,8 +139,8 @@
               accept="image/png, image/jpeg"
             />
             <p class="taillemax">jpg, png : 4mo max</p>
-            <!-- Ajoutez ceci dans votre modal où vous souhaitez afficher l'aperçu de l'image -->
-            <img id="image-preview" alt="Image Preview" />
+
+            <img id="image-preview" alt="Image Preview" src="#" />
           </div>
           <br />
           <div class="addphoto-title">

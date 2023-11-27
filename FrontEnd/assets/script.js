@@ -113,8 +113,8 @@ if (isAuthenticated === "true") {
   // Utilisateur pas co, met à jour le texte en "Login"
   loginStatusElement.textContent = "Login";
   // Masquer l'icon quand logout
-  editIcon.style.display = "none"; // Masquer icon
-  editText.style.display = "none"; // Masquer modifier
+  editIcon.style.display = "none";
+  editText.style.display = "none";
 
   // Masquer le bandeau "Mode création" quand loguot
   const bandeau = document.querySelector(".bandeau");
@@ -134,6 +134,16 @@ editIcon.addEventListener("click", function () {
 editText.addEventListener("click", function () {
   openModal();
 });
+
+function backTomyModal() {
+  // Code pour fermer la modal d'ajout de fichiers
+  const modalAjout = document.getElementById("add-photo-modal");
+  modalAjout.style.display = "none";
+
+  // Code pour ouvrir la modal de suppression
+  const modalDelete = document.getElementById("myModal");
+  modalDelete.style.display = "flex";
+}
 
 function openModal() {
   // Ouvrir le modal
@@ -155,7 +165,7 @@ function openModal() {
   // Eventlistener for the "Ajouter une photo" button
   addPhotoButton.addEventListener("click", function () {
     closeExistingModal(); // ferme modal
-    openAddPhotoModal(); // Open the "Ajouter une photo" modal
+    openAddPhotoModal(); // Ouvrir "Ajouter une photo" modal
   });
 
   // ferme modal
@@ -176,7 +186,7 @@ function openModal() {
   }
 
   // ferme sur croix
-  const closeButtons = document.querySelectorAll(".close");
+  const closeButtons = document.querySelectorAll(".closeAdd");
   closeButtons.forEach((button) => {
     button.addEventListener("click", function () {
       closeExistingModal();
